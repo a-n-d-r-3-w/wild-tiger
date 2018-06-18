@@ -37,7 +37,10 @@ MongoClient.connect(uri, function(err, client) {
   console.info('Connected to database with no error.');
   insertDocuments(db, function() {
     findDocuments(db, function() {
-      client.close();
+      var collection = db.collection('documents');
+      collection.drop().then(() => {
+        client.close();
+      })
     });
   });
 });
