@@ -1,20 +1,18 @@
 /* eslint-disable no-console */
 import { MongoClient } from 'mongodb';
 
-const insertDocuments = (db, callback) => {
-  const collection = db.collection('documents');
+const insertDocuments = (collection, callback) => {
   collection.insertMany([
     { a: 1 }, { a: 2 }, { a: 3 },
   ], (err, result) => {
-    console.log('Inserted 3 documents into the collection');
+    console.log('Inserted 3 documents into the collection.');
     callback(result);
   });
 };
 
-const findDocuments = (db, callback) => {
-  const collection = db.collection('documents');
+const findDocuments = (collection, callback) => {
   collection.find({}).toArray((err, docs) => {
-    console.log('Found the following records');
+    console.log('Found the following records:');
     console.log(docs);
     callback(docs);
   });
@@ -28,11 +26,11 @@ MongoClient.connect(uri, (err, client) => {
     console.error(err);
     return;
   }
-  const db = client.db('test');
-  console.info('Connected to database with no error.');
-  insertDocuments(db, () => {
-    findDocuments(db, () => {
-      const collection = db.collection('documents');
+  const db = client.db('wildTigerDb');
+  console.info('Connected to database.');
+  const collection = db.collection('wildTigerCollection');
+  insertDocuments(collection, () => {
+    findDocuments(collection, () => {
       collection.drop().then(() => {
         client.close();
       });
