@@ -2,6 +2,7 @@
 import 'babel-polyfill';
 import { MongoClient } from 'mongodb';
 import { readFileSync } from 'fs';
+import './server';
 
 const mongoDbConfig = JSON.parse(readFileSync('./mongoDb.json', 'utf-8'));
 const URI = `mongodb://${mongoDbConfig.username}:${mongoDbConfig.password}@cluster0-shard-00-00-spwtd.mongodb.net:27017,`
