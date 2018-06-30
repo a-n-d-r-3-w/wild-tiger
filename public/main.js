@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
   const loginStatus = document.querySelector('.container h4');
   const homeView = document.getElementById('home-view');
   const homeViewBtn = document.getElementById('btn-home-view');
+  const loginBtn = document.getElementById('btn-login');
   const logoutBtn = document.getElementById('btn-logout');
 
   // noinspection ES6ModulesDependencies, NodeModulesDependencies
@@ -15,8 +16,6 @@ window.addEventListener('load', () => {
     scope: 'openid',
     redirectUri: window.location.href,
   });
-
-  const loginBtn = document.getElementById('btn-login');
 
   loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
