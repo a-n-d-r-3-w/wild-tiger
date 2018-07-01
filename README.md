@@ -1,2 +1,2 @@
 # wild-tiger
-Experimenting with MongoDB
+Experimenting with MongoDB and Auth0
